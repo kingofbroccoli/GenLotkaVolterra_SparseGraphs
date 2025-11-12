@@ -840,21 +840,21 @@ void log_RungeKutta_adaptive_mixed_static_driver_for_phase_diagram(graph* ecosys
 // Milstein stochastic integration
 void Milstein_onestep_GLV_demographic_noise(graph* ecosystem, double *k, double *t_adr, double h, double T, double lambda){
     int i;
-    double w_i;
+    double w_i, diffusion_term, b;
     double w_sigma = sqrt(h);
-    double *diffusion_term = my_double_calloc(ecosystem->size);
     GLV_equation(k, ecosystem, lambda); // Compute deterministic derivative
     for(i=0; i<ecosystem->size; i++){
+        b = sqrt(2*T*(ecosystem->vtx[i])->x);
         w_i = GNG(0, 1) * w_sigma;
-        diffusion_term[i] = sqrt(2*T*(ecosystem->vtx[i])->x)*w_i - (T/2.0)*(w_i*w_i - h);
-        (ecosystem->vtx[i])->x = (ecosystem->vtx[i])->x + h * k[i] + diffusion_term[i];
+        diffusion_term = b * w_i + (T/2.0) * (w_i*w_i - h);
+        // In principle the variable update should be done at the end, after evaluating all the terms but the diffusion is diagonal and the deterministic part has already been evaluated
+        (ecosystem->vtx[i])->x = (ecosystem->vtx[i])->x + h * k[i] + diffusion_term;
         // Wall or Reflecting wall after noise
         if((*(ecosystem->vtx+i))->x < HARD_WALL){
             (ecosystem->vtx[i])->x = HARD_WALL;
         }
     }
     *(t_adr) += h;
-    free(diffusion_term);
     return;
 }
 
