@@ -16,8 +16,8 @@ set tics  font ",24"
 
 
 id1=303
-id2=89
-id3=137
+id2=194
+id3=396
 id4=149
 
 id5=78
@@ -26,7 +26,7 @@ id7=398
 id8=99
 
 
-p "< paste IBMF_vs_Langevin_single_abundances.txt" u 1:4 w p pt 4 lc 6 lw 2 notitle \
+p "IBMF_vs_Langevin_single_abundances.txt" u 1:4 w p pt 4 lc 6 lw 2 notitle \
 , sprintf("< awk '$3 == %d' IBMF_vs_Langevin_single_abundances.txt", id1) u 1:4 w p pt 5 lc 1 lw 3 notitle \
 , sprintf("< awk '$3 == %d' IBMF_vs_Langevin_single_abundances.txt", id2) u 1:4 w p pt 5 lc 2 lw 3 notitle \
 , sprintf("< awk '$3 == %d' IBMF_vs_Langevin_single_abundances.txt", id3) u 1:4 w p pt 5 lc 7 lw 3 notitle \
@@ -73,10 +73,15 @@ val3 = real(val3)
 val4 = system(sprintf("awk '($3==%d) {print $4}' IBMF_vs_Langevin_single_abundances.txt", id4))
 val4 = real(val4)
 
-p "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:305 w l lc 1 lw 2 notitle\
-, "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:91 w l lc 2 lw 2 notitle \
-, "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:139 w l lc 7 lw 2 notitle \
-, "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:151 w l lc 4 lw 2 notitle \
+col1 = id1 + 2
+col2 = id2 + 2
+col3 = id3 + 2
+col4 = id4 + 2
+
+p "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col1 w l lc 1 lw 2 notitle\
+, "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col2 w l lc 2 lw 2 notitle \
+, "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col3 w l lc 7 lw 2 notitle \
+, "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col4 w l lc 4 lw 2 notitle \
 , val1 w l lc 1 lw 3 dt 3 notitle \
 , val2 w l lc 2 lw 3 dt 3 notitle \
 , val3 w l lc 7 lw 3 dt 3 notitle \
@@ -108,10 +113,15 @@ val7 = real(val7)
 val8 = system(sprintf("awk '($3==%d) {print $4}' IBMF_vs_Langevin_single_abundances.txt", id8))
 val8 = real(val8)
 
-p "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:80 w l lc rgb "#4a0c6b" lw 2 notitle\
-, "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:701 w l lc rgb "#6ece58" lw 2 notitle \
-, "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:400 w l lc rgb "#f7d13d" lw 2 notitle \
-, "../../Data/Simulations/Asymmetric/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:101 w l lc rgb "#bd3786" lw 2 notitle \
+col5 = id5 + 2
+col6 = id6 + 2
+col7 = id7 + 2
+col8 = id8 + 2
+
+p "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col5 w l lc rgb "#4a0c6b" lw 2 notitle\
+, "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col6 w l lc rgb "#6ece58" lw 2 notitle \
+, "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col7 w l lc rgb "#f7d13d" lw 2 notitle \
+, "../../Langevin/Results/One_graph/Lotka-Volterra_Extraction_1_Measure_2_mu_0.0_sigma_0.150_T_0.015.txt" u 1:col8 w l lc rgb "#bd3786" lw 2 notitle \
 , val5 w l lc 8 lw 3 dt 3 notitle \
 , val6 w l lc 8 lw 3 dt 3 notitle \
 , val7 w l lc 8 lw 3 dt 3 notitle \
