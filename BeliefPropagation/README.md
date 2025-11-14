@@ -25,14 +25,14 @@ Continuous Belief Propagation implementation that computes and outputs marginal 
 - `N_tot`: Grid size for discretization
 - `N`: Number of nodes
 - `damping`: Damping factor for message updates (0-1)
-- `seed`: Optional random seed
+- `seed` (optional): Random seed for graph generation
 
 **Output:**
 - `BP_cont_LV_sigma0_true_marginals_N_*_T_*_mu_*.txt`: Node marginal distributions
 - `BP_cont_LV_sigma0_true_marginals_gaussian_part_N_*_T_*_mu_*.txt`: Gaussian component analysis
 
 #### [`cont-BP-grafo-transition-line.c`](cont-BP-grafo-transition-line.c)
-Implements continuous BP to detect multiple-equilibria phase transitions by scanning parameter space (temperature T and interaction strength MU).
+Implements continuous Belief Propagation on a random regular graph to detect multiple-equilibria phase transitions by scanning (T, MU) parameter space.
 
 **Key Features:**
 - Scans temperature and interaction strength space
@@ -41,15 +41,15 @@ Implements continuous BP to detect multiple-equilibria phase transitions by scan
 
 **Usage:**
 ```bash
-./program MU T N_tot [seed]
+./program MU_start T_start N_tot [seed]
 ```
-- `MU`: It sets the lower value of MU scanned
-- `T`: It sets the lower value of T scanned
+- `MU_start`: Starting value of the interaction parameter MU. The program increases MU in steps of 0.001.
+- `T_start`: Starting temperature. The program increases T until 0.0342, using a step that is 0.001 or 0.0005 depending on T.
 - `N_tot`: Grid size for discretization
-- `seed`: Optional random seed
+- `seed` (optional): Random seed for graph generation
 
 **Output:**
-- `MU_crit.dat`: Critical points where BP fails to converge
+- `MU_crit.dat`: Critical points (T, MU) where BP fails to converge
 
 #### [`functions-cont-BP-grafo-transition-line.h`](functions-cont-BP-grafo-transition-line.h)
 Header file containing core BP functions shared between C programs.
@@ -113,28 +113,6 @@ gcc -o program program.c -lgsl -lgslcblas -lm
 pip install numpy scipy matplotlib
 ```
 
-## Algorithm Overview
-
-### Belief Propagation on Random Regular Graphs
-
-The code implements continuous BP for a random 3-regular graph. Key equations:
-
-**Message Update:**
-$$\eta_{i \to j}(n_i) \propto e^{-\beta(n_i^2 - 2n_i)} \prod_{k \in \partial i \setminus j} \eta_{k \to i}(n_i)$$
-
-**Marginal Distribution:**
-$$\eta_i(n_i) \propto e^{-\beta(n_i^2 - 2n_i)} \prod_{k \in \partial i} \eta_{k \to i}(n_i)$$
-
-**Numerical Integration:**
-Uses Simpson's rule with grid discretization.
-
-## VS Code Configuration
-
-The repository includes VS Code settings:
-- `.vscode/launch.json`: LLDB debugging configuration
-- `.vscode/c_cpp_properties.json`: Include paths and compiler settings
-- `.vscode/settings.json`: C++ runner and warning configurations
-
 ## Parameters
 
 | Parameter | Range | Description |
@@ -148,6 +126,11 @@ The repository includes VS Code settings:
 | `C` | Fixed at 3 | Graph connectivity (regular 3-graphs) |
 
 
-## References
+Authors / Contact
+-----------------
+This code is part of the `GenLotkaVolterra_SparseGraphs` repository.
+If you need help or wish to improve documentation, open an issue or contact the maintainer.
 
-The implementation is based on Belief Propagation algorithms for continuous variables on factor graphs and phase transition analysis in random graph models.
+License
+-------
+Check the repository root for license information; this folder does not contain a separate license file.
