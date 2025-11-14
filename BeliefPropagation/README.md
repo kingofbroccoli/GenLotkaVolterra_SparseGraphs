@@ -32,7 +32,7 @@ Continuous Belief Propagation implementation that computes and outputs marginal 
 - `BP_cont_LV_sigma0_true_marginals_gaussian_part_N_*_T_*_mu_*.txt`: Gaussian component analysis
 
 #### [`cont-BP-grafo-transition-line.c`](cont-BP-grafo-transition-line.c)
-Implements continuous BP to detect phase transitions by scanning parameter space (temperature T and interaction strength MU).
+Implements continuous BP to detect multiple-equilibria phase transitions by scanning parameter space (temperature T and interaction strength MU).
 
 **Key Features:**
 - Scans temperature and interaction strength space
@@ -43,6 +43,10 @@ Implements continuous BP to detect phase transitions by scanning parameter space
 ```bash
 ./program MU T N_tot [seed]
 ```
+- `MU`: It sets the lower value of MU scanned
+- `T`: It sets the lower value of T scanned
+- `N_tot`: Grid size for discretization
+- `seed`: Optional random seed
 
 **Output:**
 - `MU_crit.dat`: Critical points where BP fails to converge
@@ -59,11 +63,6 @@ Header file containing core BP functions shared between C programs.
 - `BP_iteration()`: Single BP update step
 - `compute_eta_hat_MOMENTS()`: Computes moments from marginals
 - `MakeRandomRegularGraph()`: Generates random 3-regular graphs
-
-**Mathematical Details:**
-- Uses parabolic cylinder functions for initial BP message
-- Implements truncated Gaussian approximation
-- Grid spacing: $\Delta = \frac{\text{step}}{50}$ for fine resolution
 
 ### Python Script
 
@@ -118,7 +117,7 @@ pip install numpy scipy matplotlib
 
 ### Belief Propagation on Random Regular Graphs
 
-The code implements continuous BP for a factor graph defined on random 3-regular graphs. Key equations:
+The code implements continuous BP for a random 3-regular graph. Key equations:
 
 **Message Update:**
 $$\eta_{i \to j}(n_i) \propto e^{-\beta(n_i^2 - 2n_i)} \prod_{k \in \partial i \setminus j} \eta_{k \to i}(n_i)$$
@@ -127,7 +126,7 @@ $$\eta_{i \to j}(n_i) \propto e^{-\beta(n_i^2 - 2n_i)} \prod_{k \in \partial i \
 $$\eta_i(n_i) \propto e^{-\beta(n_i^2 - 2n_i)} \prod_{k \in \partial i} \eta_{k \to i}(n_i)$$
 
 **Numerical Integration:**
-Uses Simpson's rule with adaptive grid discretization.
+Uses Simpson's rule with grid discretization.
 
 ## VS Code Configuration
 
@@ -148,23 +147,6 @@ The repository includes VS Code settings:
 | `LAMBDA` | Fixed at $10^{-6}$ | Power law parameter |
 | `C` | Fixed at 3 | Graph connectivity (regular 3-graphs) |
 
-## Output Formats
-
-**Distribution Files:**
-```
-# n_i    av(eta)    eta_i[0]    eta_i[1]    ...    eta_i[N-1]
-0.0      0.001234   0.001200    0.001150    ...    0.001300
-0.002    0.001256   0.001230    0.001180    ...    0.001320
-...
-```
-
-**Critical Points File (`MU_crit.dat`):**
-```
-T_value    MU_critical
-0.001      0.123
-0.002      0.145
-...
-```
 
 ## References
 
