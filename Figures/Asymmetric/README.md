@@ -49,8 +49,8 @@ done
 - Uses same data files as above script
 - Additional feature: Vertical reference line at x = -1/3
 
-### IBMFs_Langevin_T0_Lotka_Volterra_several_N_diff_init_conds.plt
-- Output: IBMFs_Langevin_T0_Lotka_Volterra_several_N_diff_init_conds.eps
+### IBMFs_Langevin_T0_Lotka_Volterra_several_N_diff_init_conds_damping_02.plt
+- Output: IBMFs_Langevin_T0_Lotka_Volterra_several_N_diff_init_conds_damping_02.eps
 - Data files:
   - Figures/Asymmetric/dumb_data.txt
   - For N = 256,512,1024,2048,4096:
@@ -61,6 +61,18 @@ done
 - Column usage:
   - Transition files: col1=x, col2=lower, col3=upper
   - Some files include col4 (multiplicity flag)
+
+
+### IBMFs_Langevin_T0_Lotka_Volterra_several_N_diff_init_conds_different_dampings_N_1024.plt
+- Output: IBMFs_Langevin_T0_Lotka_Volterra_several_N_diff_init_conds_different_dampings_N_1024.eps
+- Data files:
+  - Data/IBMF/Asymmetric/IBMF_seq_RRG_T_0.000_lambda_0.000_PD_Lotka_Volterra_transitions_mult_av0_0.5_dn_0.5_ninitconds_10_tol_1e-6_maxiter_10000_eps_0.000_N_1024_c_3_damping_1.0_nseq_1.txt
+  - Data/IBMF/Asymmetric/IBMF_seq_RRG_T_0.000_lambda_0.000_PD_Lotka_Volterra_transitions_mult_av0_0.5_dn_0.5_ninitconds_10_tol_1e-6_maxiter_10000_eps_0.000_N_1024_c_3_damping_0.2_nseq_1.txt
+  - Data/Simulations/Asymmetric/IBMF_seq_RRG_T_0.000_lambda_0.000_PD_Lotka_Volterra_transitions_mult_av0_0.5_dn_0.5_ninitconds_10_tol_1e-6_maxiter_10000_eps_0.000_N_1024_c_3_damping_0.2_nseq_1.txt
+- Column usage:
+  - Transition files: col1=x, col2=lower, col3=upper
+  - Some files include col4 (multiplicity flag)
+  
 
 ### IBMFs_Langevin_Lotka_Volterra_abundances_single_graph.plt
 - Output: IBMFs_Langevin_Lotka_Volterra_abundances_single_graph.eps

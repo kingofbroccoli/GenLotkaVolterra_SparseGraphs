@@ -65,5 +65,13 @@ Per-script summary (files referenced — inferred)
   - ../../Data/BP/Symmetric/BP_transition_sigma0_N_128_sequential_changing_order.txt
   - Stars_In_IBMFs_BP_sigma0.txt (local helper file)
 
+
+6) IBMFs_BP_sigma0_Lotka_Volterra_changing_T_diff_init_damping_02.plt
+- Output: IBMFs_BP_sigma0_Lotka_Volterra_changing_T_diff_init_damping_02.eps
+- Data files referenced:
+  - ../../Data/IBMF/Symmetric/IBMF_seq_RRG_PD_Lotka_Volterra_transitions_av0_0.08_lambda_1e-6_tol_1e-6_maxiter_10000_eps_1.000_sigma_0.000_N_1024_c_3_damping_1.0_nseq_10.txt
+  - ../../Data/IBMF/Symmetric/IBMF_seq_RRG_PD_Lotka_Volterra_transitions_mult_av0_0.5_lambda_1e-6_dn_0.5_ninitconds_10_tol_1e-6_maxiter_10000_eps_1.000_sigma_0.000_N_1024_c_3_damping_0.2_nseq_1.txt
+
+
 Helper files in this folder
 - Stars_In_IBMFs_BP_sigma0.txt — local helper with plotting markers/positions used by IBMFs_BP_sigma0_Lotka_Volterra_changing_T.plt
