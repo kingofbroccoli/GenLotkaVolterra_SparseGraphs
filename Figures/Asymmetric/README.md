@@ -37,7 +37,7 @@ done
 ### IBMFs_Langevin_T0_Lotka_Volterra_several_N_divergence.plt
 - Output: IBMFs_Langevin_T0_Lotka_Volterra_several_N_divergence.eps
 - Data files:
-  - Figures/Asymmetric/dumb_data.txt (reference curve)
+  - Figures/Asymmetric/dumb_data.txt
   - Transition files for N = 256,512,1024,2048,4096:
     ```
     Data/Simulations/Asymmetric/Lotka-Volterra_transition_div_*_N_<N>.txt
@@ -54,6 +54,31 @@ done
 - Data files:
   - Figures/Asymmetric/dumb_data.txt
   - For N = 256,512,1024,2048,4096:
+    ```
+    Data/Simulations/Asymmetric/Lotka-Volterra_transition_mult_*_N_<N>.txt
+    Data/IBMF/Asymmetric/IBMF_seq_RRG_T_*_transitions_mult_*_N_<N>.txt
+    ```
+- Column usage:
+  - Transition files: col1=x, col2=lower, col3=upper
+  - Some files include col4 (multiplicity flag)
+
+
+### IBMFs_Langevin_T0_Lotka_Volterra_eps05_several_N_diff_init_conds_damping_02_divergence_allrange.plt
+- Output: IBMFs_Langevin_T0_Lotka_Volterra_eps05_several_N_diff_init_conds_damping_02_divergence_allrange.eps
+- Data files:
+  - Figures/Asymmetric/dumb_data.txt
+  - Transition files for N = 2048,4096 with correlated interaction couplings (epsilon=0.5):
+    ```
+    Data/Simulations/Asymmetric/Lotka-Volterra_transition_div_*_N_<N>.txt
+    Data/IBMF/Asymmetric/IBMF_T0_seq_RRG_PD_Lotka_Volterra_transitions_div_*_N_<N>.txt
+    ```
+- Additional feature: Vertical reference line at x = -1/3
+
+### IBMFs_Langevin_T0_Lotka_Volterra_eps05_several_N_diff_init_conds_damping_02_allrange.plt
+- Output: IBMFs_Langevin_T0_Lotka_Volterra_eps05_several_N_diff_init_conds_damping_02_allrange.eps
+- Data files:
+  - Figures/Asymmetric/dumb_data.txt
+  - Transition files for N = 2048,4096 with correlated interaction couplings (epsilon=0.5):
     ```
     Data/Simulations/Asymmetric/Lotka-Volterra_transition_mult_*_N_<N>.txt
     Data/IBMF/Asymmetric/IBMF_seq_RRG_T_*_transitions_mult_*_N_<N>.txt
