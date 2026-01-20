@@ -1,27 +1,43 @@
-EIGEN_INC ?= $(abspath eigen-3.4.0)
-CXX ?= g++
-CXXFLAGS ?= -std=c++17 -O2 -I$(EIGEN_INC)
-LDFLAGS ?= -lm
+# Usage:
+# make        # compile all binary
+# make clean  # remove ALL binaries and objects
+# $@ --> target , $< first prerequisite , $^ --> prerequisites
 
-SRC = basic_toolbox.cpp \
-      generate_graph_from_sequence_toolbox.cpp \
-      ecosystem_numerical_integration_toolbox.cpp
+.PHONY = all clean
 
-DRIVERS = Ecosystem_Dynamics_on_Graphs_in_Temperature \
-          Ecosystem_Dynamics_on_RRG_zero_Temperature \
-          Ecosystem_Dynamics_on_DirectedER_zero_Temperature
+CC = g++ -std=c++23		# compiler to use
+LIBS = -lm	# external libraries
+OPT = -O3 -march=native -mtune=native -fopenmp
+CFLAGS = -Wall # -g	# Use -g just for debug			# compiler flags: all warnings + debugger meta-data
 
-BIN_DIR = ../build/bin
+BINS := Ecosystem_Dynamics_on_RRG_zero_Temperature    # There are three options here, uncomment the one you want. Default is the RRG zero temperature.
+# BINS := Ecosystem_Dynamics_on_DirectedER_zero_Temperature
+# BINS := Ecosystem_Dynamics_on_Graphs_in_Temperature
+MAIN_SRCS := $(BINS).cpp
+# Ecosystem_Dynamics_on_Graphs.cpp
+TOOLBOX_SRCS := basic_toolbox.cpp \
+            generate_graph_from_sequence_toolbox.cpp \
+            ecosystem_numerical_integration_toolbox.cpp
+SRCS := $(MAIN_SRCS) $(TOOLBOX_SRCS)
+OBJS := $(SRCS:%.cpp=%.o)
+#BINS := $(SRCS:%.c=%)
 
-all: $(DRIVERS:%=$(BIN_DIR)/%)
+all: $(BINS)
 
-$(BIN_DIR)/%: $(SRC) $(@F).cpp | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) $(SRC) $(@F).cpp -o $@ $(LDFLAGS)
+# This default rule compiles the executable program
+$(BINS): $(OBJS)
+	@echo "Checking.."
+#	@echo $(BINS)
+#	@echo $(OBJS)
+#	@echo $(SRCS)
+	$(CC) $^ $(OPT) $(CFLAGS) $(LIBS) -o $@
+	chmod a+x $@
 
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+# This rule compiles each module into its object file
+%.o: %.cpp
+	@echo "Creating object.."
+	$(CC) $(OPT) $(CFLAGS) -c $< -o $@ $(LIBS)
 
 clean:
-	rm -rf $(BIN_DIR)
-
-.PHONY: all clean
+	@echo "Cleaning up..."
+	rm -rvf *.o $(BINS)

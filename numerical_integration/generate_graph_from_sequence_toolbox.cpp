@@ -477,8 +477,8 @@ void graph_from_degree_sequence(RealMatrix& graph, int N, int *rds, int *rdsp, i
         //logweight += log(kij) - log(hs);
         //weights_generator(&graph(fingerprint[crossindex[hs]], fingerprint[q]), &graph(fingerprint[q], fingerprint[crossindex[hs]]), p1, p2, epsilon);
         weights_generator(&a_ij, &a_ji, p1, p2, epsilon);
-        graph(fingerprint[crossindex[hs]], fingerprint[q]) = a_ij;
-        graph(fingerprint[q], fingerprint[crossindex[hs]]) = a_ji;
+        graph(fingerprint[crossindex[hs]], fingerprint[q]) = (Real) a_ij;
+        graph(fingerprint[q], fingerprint[crossindex[hs]]) = (Real) a_ji;
         dqm1 = rds[q]-1;
         srd = find_smallest_reduced_degree(fnc, fnpc); // Find Smallest Reduced Degree
         update_rds_connection(rds, crossindex, &kstar, anc, fnc, fingerprint, q, hs);
@@ -500,8 +500,8 @@ void graph_from_degree_sequence(RealMatrix& graph, int N, int *rds, int *rdsp, i
             //logweight += log(kij) - log(hs);
             //weights_generator(&graph(fingerprint[crossindex[hs]], fingerprint[q]), &graph(fingerprint[q], fingerprint[crossindex[hs]]), p1, p2, epsilon);
             weights_generator(&a_ij, &a_ji, p1, p2, epsilon);
-            graph(fingerprint[crossindex[hs]], fingerprint[q]) = a_ij;
-            graph(fingerprint[q], fingerprint[crossindex[hs]]) = a_ji;
+            graph(fingerprint[crossindex[hs]], fingerprint[q]) = (Real) a_ij;
+            graph(fingerprint[q], fingerprint[crossindex[hs]]) = (Real) a_ji;
             if(i<(hs-1)){ // "Bulk" of connections
                 srd = find_smallest_reduced_degree(fnc, fnpc); // Find new Smallest Reduced Degree
                 update_rdsp_connection(rdsp, cip, &ksp, fnpc, srd, dqm1, hs);
@@ -524,8 +524,8 @@ void graph_from_degree_sequence(RealMatrix& graph, int N, int *rds, int *rdsp, i
         //logweight += log(kij);
         //weights_generator(&graph(fingerprint[crossindex[hs]], fingerprint[q]), &graph(fingerprint[q], fingerprint[crossindex[hs]]), p1, p2, epsilon);
         weights_generator(&a_ij, &a_ji, p1, p2, epsilon);
-        graph(fingerprint[crossindex[hs]], fingerprint[q]) = a_ij;
-        graph(fingerprint[q], fingerprint[crossindex[hs]]) = a_ji;
+        graph(fingerprint[crossindex[hs]], fingerprint[q]) = (Real) a_ij;
+        graph(fingerprint[q], fingerprint[crossindex[hs]]) = (Real) a_ji;
         update_rds_connection(rds, crossindex, &kstar, anc, fnc, fingerprint, q, hs);
         // We update hs
         update_rds_newhub(rds, crossindex, &kstar, anc, fnc, &hs, fhs);

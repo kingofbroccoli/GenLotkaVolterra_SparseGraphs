@@ -14,7 +14,7 @@
 
 
     /* TYPE DEFINITION */
-    using Real = double; // This is equivalent to: typedef double real;
+    using Real = float; // This is equivalent to: typedef double real;
     using RealVector = Eigen::Matrix<Real, Eigen::Dynamic, 1>;
     using RealMatrix = Eigen::Matrix<Real, Eigen::Dynamic, Eigen::Dynamic>; // This is equivalent to: typedef Eigen::Matrix<Real, Eigen::Dynamic, Eigen::Dynamic> RealMatrix;
 
