@@ -19,7 +19,6 @@
 #include <gsl/gsl_randist.h>    // For random number generation
 #include <gsl/gsl_sf_hyperg.h>  // For hypergeometric functions
 #include <gsl/gsl_sf_gamma.h>   // For gamma functions
-#include "math.h"
 #include <cmath>
 
 using namespace std;
@@ -322,7 +321,7 @@ void print_results_short(int iter, Tnode *nodes, long N, unsigned long seed_grap
 
     long counter_dead = 0;
     for (long i = 0; i < N; i++){
-        if (nodes[i].av <= 0){
+        if (nodes[i].field <= 0){
             counter_dead++;
         }
     }

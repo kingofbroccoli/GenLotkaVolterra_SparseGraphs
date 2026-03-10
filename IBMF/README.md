@@ -111,7 +111,7 @@ Output
 ------
 The program prints a tab-separated summary per run (iterations, converged/diverged status,
 average abundance, fluctuations, number of unconverged nodes, number of extinct nodes,
-seeds used, whether fixed points matched, runtime in seconds). When `--print_avgs` is set,
+seed_graph: used to generate the graph, seed_seq: used to extract the random order in which the nodes are updated by IBMF, seed_initcond: used to generate the initial conditions, whether fixed points obtained with different seed_seq and/or seed_initcond matched, runtime in seconds). When `--print_avgs` is set,
 individual abundances are written to files named like `<fileout_base>_seedseq_<s>_seedinit_<i>.txt`.
 
 Notes and troubleshooting
