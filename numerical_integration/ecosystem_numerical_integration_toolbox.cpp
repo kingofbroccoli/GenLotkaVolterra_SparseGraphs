@@ -826,6 +826,9 @@ void log_RungeKutta_adaptive_mixed_static_driver_for_phase_diagram(graph* ecosys
             j = MAX_ADAPTIVE_STEPS+2; // We get out of the loop
         }
     } // End of the loop on the steps
+    
+    // Compute average extinctions
+    *av_extinction_adr = 0;
     for(int i=0; i<NUM_THERM_EQ_INTERVALS; i++){
         *av_extinction_adr += extinction_counter_circular[i];
     }
