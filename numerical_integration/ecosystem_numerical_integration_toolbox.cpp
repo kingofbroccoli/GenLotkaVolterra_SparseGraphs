@@ -460,13 +460,13 @@ bool are_abundances_in_array_and_take_max(graph *ecosystem, double *y, double de
 void create_bunch_of_directories(char* dir_name){
     char *name_buffer;
     name_buffer = my_char_malloc(CHAR_LENGHT);
-    snprintf(name_buffer, CHAR_LENGHT, "mkdir %s", dir_name);
+    snprintf(name_buffer, CHAR_LENGHT, "mkdir -p %s", dir_name);
     system(name_buffer);
-    snprintf(name_buffer, CHAR_LENGHT, "mkdir %s/Extractions", dir_name);
+    snprintf(name_buffer, CHAR_LENGHT, "mkdir -p %s/Extractions", dir_name);
     system(name_buffer);
-    snprintf(name_buffer, CHAR_LENGHT, "mkdir %s/Initial_Conditions", dir_name);
+    snprintf(name_buffer, CHAR_LENGHT, "mkdir -p %s/Initial_Conditions", dir_name);
     system(name_buffer);
-    snprintf(name_buffer, CHAR_LENGHT, "mkdir %s/Evolutions", dir_name);
+    snprintf(name_buffer, CHAR_LENGHT, "mkdir -p %s/Evolutions", dir_name);
     system(name_buffer);
     free(name_buffer);
     return;
