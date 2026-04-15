@@ -76,7 +76,7 @@ int main(int argc, char **argv){
     snprintf(name_buffer, sizeof(char) * CHAR_LENGHT, "mkdir epsilon_%s_%s_lambda_%g_h_%g", epsilon_label, ia_label, lambda, h); // sizeof(char)=1 so it can be omitted
     system(name_buffer); 
     // Init Ecosystem
-    ecosystem = ecosystem_initialization(N)
+    ecosystem = ecosystem_initialization(N);
     snprintf(dir_name, CHAR_LENGHT, "epsilon_%s_%s_lambda_%g_h_%g/N_%d_c_%.2f", epsilon_label, ia_label, lambda, h, ecosystem->size, c); // sizeof(char)=1 so it can be omitted
     create_bunch_of_directories(dir_name);
     snprintf(name_buffer, CHAR_LENGHT, "mkdir %s/Equilibrium_Points", dir_name);
